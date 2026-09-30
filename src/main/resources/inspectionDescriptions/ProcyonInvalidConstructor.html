@@ -1,0 +1,8 @@
+<html>
+<body>
+Reports a function passed to <code>component.Register</code> that Procyon does not accept as a constructor.
+<!-- tooltip end -->
+<p>A constructor must return exactly one result, so <code>(*Foo, error)</code> is not accepted, and that result must be
+a struct, a pointer to a struct or an interface. Procyon panics with this reason when the component is registered.</p>
+</body>
+</html>

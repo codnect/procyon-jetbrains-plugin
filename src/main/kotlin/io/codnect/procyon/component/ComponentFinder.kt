@@ -171,7 +171,7 @@ internal object ComponentFinder {
         )
     }
 
-    /** Returns every `component.Register(fn)` call of the file with the function it registers. */
+    /** Returns every `component.Register(fn)` call of the file with the constructor it registers, when it is valid. */
     private fun registrations(file: PsiFile): List<Pair<GoCallExpr, GoFunctionDeclaration>> =
         PsiTreeUtil.findChildrenOfType(file, GoCallExpr::class.java).mapNotNull { call ->
             val callee = call.expression as? GoReferenceExpression ?: return@mapNotNull null
@@ -181,6 +181,9 @@ internal object ComponentFinder {
 
             val constructor = (call.argumentList.expressionList.firstOrNull() as? GoReferenceExpression)
                 ?.reference?.resolve() as? GoFunctionDeclaration ?: return@mapNotNull null
+
+            // Procyon rejects it when it is registered, so it is not a component.
+            if (ConstructorRules.violation(constructor) != null) return@mapNotNull null
             call to constructor
         }
 

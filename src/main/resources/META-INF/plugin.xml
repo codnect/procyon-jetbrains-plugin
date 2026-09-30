@@ -30,6 +30,8 @@
                 (<code>WithQualifierAt</code>, <code>WithQualifierFor</code>) chooses one.</li>
             <li><b>Duplicate component name</b>: two registrations share a name, which makes Procyon panic at
                 startup. <code>component.WithName</code> gives another name.</li>
+            <li><b>Invalid component constructor</b>: it must return exactly one struct, pointer to a struct or
+                interface.</li>
             <li><b>Constructor called in component.Register</b>, with a quick fix.</li>
             <li>Navigate from a qualifier name to the component that has it.</li>
         </ul>
@@ -76,6 +78,10 @@
                          key="inspection.duplicate.component.name" shortName="ProcyonDuplicateComponent"
                          enabledByDefault="true" level="ERROR"
                          implementationClass="io.codnect.procyon.component.DuplicateComponentInspection"/>
+        <localInspection language="go" bundle="messages.ProcyonBundle" groupKey="inspection.group.name"
+                         key="inspection.invalid.constructor.name" shortName="ProcyonInvalidConstructor"
+                         enabledByDefault="true" level="ERROR"
+                         implementationClass="io.codnect.procyon.component.InvalidConstructorInspection"/>
         <localInspection language="go" bundle="messages.ProcyonBundle" groupKey="inspection.group.name"
                          key="inspection.register.call.name" shortName="ProcyonRegisterCall"
                          enabledByDefault="true" level="ERROR"
