@@ -55,6 +55,11 @@
     <depends>org.jetbrains.plugins.yaml</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="Procyon" displayType="BALLOON" bundle="messages.ProcyonBundle" key="notification.group.name"/>
+
+        <!-- New project -->
+        <newProjectWizard.languageGenerator implementation="io.codnect.procyon.project.ProcyonNewProjectWizard"/>
+
         <!-- Components -->
         <codeInsight.lineMarkerProvider language="go" implementationClass="io.codnect.procyon.component.ComponentLineMarkerProvider"/>
         <codeInsight.lineMarkerProvider language="go" implementationClass="io.codnect.procyon.component.RegisterLineMarkerProvider"/>
