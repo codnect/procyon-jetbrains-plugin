@@ -53,4 +53,11 @@
 
     <depends>org.jetbrains.plugins.go</depends>
     <depends>org.jetbrains.plugins.yaml</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Configuration -->
+        <psi.referenceContributor language="go" implementation="io.codnect.procyon.config.PropertyReferenceContributor"/>
+        <gotoDeclarationHandler implementation="io.codnect.procyon.config.PropertyGotoDeclarationHandler"/>
+        <completion.contributor language="yaml" order="first" implementationClass="io.codnect.procyon.config.YamlPropertyCompletionContributor"/>
+    </extensions>
 </idea-plugin>
