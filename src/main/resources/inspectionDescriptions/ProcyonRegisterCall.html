@@ -1,0 +1,7 @@
+<html>
+<body>
+Reports a constructor that is called inside <code>component.Register</code>.
+<!-- tooltip end -->
+<p><code>component.Register(NewFoo())</code> registers what the constructor returns, but Procyon expects the constructor itself: <code>component.Register(NewFoo)</code>. A quick fix removes the call.</p>
+</body>
+</html>
