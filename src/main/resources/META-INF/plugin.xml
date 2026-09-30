@@ -1,31 +1,56 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <!-- It cannot be changed between the plugin versions. -->
     <id>io.codnect.procyon.procyon-jetbrains-plugin</id>
 
-    <!-- Public plugin name should be written in Title Case.
-     Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
-    <name>Procyon-jetbrains-plugin</name>
+    <name>Procyon</name>
 
-    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor>Codnect</vendor>
 
-    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
     <description><![CDATA[
-        Enter short description for your plugin here.<br>
-        <em>most HTML tags may be used</em>
-        ]]></description>
+        <p>
+            IDE support for <b>Procyon</b>, the Go application framework: components, dependency injection,
+            HTTP controllers and externalized configuration.
+        </p>
 
-    <!-- Product and plugin compatibility requirements.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+        <h3>New project</h3>
+        <ul>
+            <li>Create a Procyon application from <b>File | New | Project</b>. The plugin installs the Procyon
+                CLI and runs <code>procyon init</code> for you, with the HTTP or the CLI runner sample.</li>
+        </ul>
+
+        <h3>Components and dependency injection</h3>
+        <ul>
+            <li>Gutter icons on every component, on its constructor and on its
+                <code>component.Register</code> call, with navigation between them.</li>
+            <li><b>Could not inject</b>: a parameter of a registered constructor has no component of its type,
+                or the name of its qualifier matches none. The components that Procyon registers itself, such as
+                <code>runtime.Environment</code>, are known.</li>
+            <li><b>Ambiguous injection</b>: more than one component could fill a parameter and no qualifier
+                (<code>WithQualifierAt</code>, <code>WithQualifierFor</code>) chooses one.</li>
+            <li><b>Duplicate component name</b>: two registrations share a name, which makes Procyon panic at
+                startup. <code>component.WithName</code> gives another name.</li>
+            <li><b>Constructor called in component.Register</b>, with a quick fix.</li>
+            <li>Navigate from a qualifier name to the component that has it.</li>
+        </ul>
+
+        <h3>HTTP</h3>
+        <ul>
+            <li>Gutter icons on controllers and on their handlers, with the routes they serve.</li>
+            <li>The <b>Procyon Endpoints</b> tool window lists every endpoint as <code>Controller#handler</code>.</li>
+        </ul>
+
+        <h3>Configuration</h3>
+        <ul>
+            <li>Navigate between a <code>property:"name"</code> tag or a <code>Prefix()</code> of a properties
+                struct and its key in the YAML files under <code>resources</code>, and back.</li>
+            <li>Completion of property keys in YAML files, like Spring does for <code>application.yml</code>:
+                full names, types, defaults and the comments of the fields, also from libraries.</li>
+        </ul>
+
+        <p>Requires the Go plugin (GoLand, or IntelliJ IDEA Ultimate with the Go plugin).</p>
+    ]]></description>
+
     <depends>org.jetbrains.plugins.go</depends>
     <depends>org.jetbrains.plugins.yaml</depends>
-
-
-    <!-- Extensions defined by the plugin.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
-    <extensions defaultExtensionNs="com.intellij">
-    </extensions>
-
 </idea-plugin>
