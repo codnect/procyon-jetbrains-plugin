@@ -80,6 +80,12 @@
                          enabledByDefault="true" level="WARNING"
                          implementationClass="io.codnect.procyon.component.NotRegisteredInspection"/>
 
+        <!-- HTTP -->
+        <codeInsight.lineMarkerProvider language="go" implementationClass="io.codnect.procyon.http.EndpointMapperLineMarkerProvider"/>
+        <codeInsight.lineMarkerProvider language="go" implementationClass="io.codnect.procyon.http.HandlerLineMarkerProvider"/>
+        <toolWindow id="Procyon Endpoints" anchor="right" icon="/icons/controller.svg"
+                    factoryClass="io.codnect.procyon.endpoints.EndpointsToolWindowFactory"/>
+
         <!-- Configuration -->
         <codeInsight.lineMarkerProvider language="go" implementationClass="io.codnect.procyon.config.PropertyLineMarkerProvider"/>
         <psi.referenceContributor language="go" implementation="io.codnect.procyon.config.PropertyReferenceContributor"/>
